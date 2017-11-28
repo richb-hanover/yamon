@@ -1,0 +1,5 @@
+var installed='2017-11-13 15:31:38'
+var updated='2017-11-20 07:57:38'
+var router='TP-Link Archer C7 v2 archer-c7'
+var firmware='LEDE Reboot 17.01.0 r3205-59508e3  '
+var version='3.3.6'

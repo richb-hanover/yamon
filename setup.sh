@@ -1,0 +1,1 @@
+/opt/YAMon3/setup3.3.6.sh
