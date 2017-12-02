@@ -14,7 +14,7 @@ Further, you can optionally include upload/download figures from your ISP to com
 
 For a more detail explanation of YAMon's features and benefits, please go to http://usage-monitoring.com.
 
-##SHORT REQUIREMENTS CHECKLIST FOR YAMon
+## SHORT REQUIREMENTS CHECKLIST FOR YAMon
 
 These instructions presume that
 
@@ -67,16 +67,15 @@ The YAMon script creates four primary data files which are typically stored perm
  
 1. `users.js` - contains information relating to the device - its IP and mac addresses, its name and the group (or owner) to which it belongs:
 
-	```
-ud_a({"mac":"11:22:33:44:55:66","ip":"192.168.1.1","owner":"Al","name":"iPhone","colour":"","added":"2014-02-10 22:05:03","updated":"2014-03-02 13:33:30"})
-```
+    ```
+    ud_a({"mac":"11:22:33:44:55:66","ip":"192.168.1.1","owner":"Al","name":"iPhone","colour":"","added":"2014-02-10 22:05:03","updated":"2014-03-02 13:33:30"})
+    ```
 
-	Lines will be added to this file as soon as new devices are detected on the network.  
+    Lines will be added to this file as soon as new devices are detected on the network.  
  
-	```
-ud_a({"mac":"00:00:XX:XX:XX:XX","ip":"192.168.1.99","owner":"Unknown","name":"New Device","colour":"","added":"2016-02-10 22:05:03","updated":"2016-03-02 13:33:30"})
-```   
-
+    ```
+    ud_a({"mac":"00:00:XX:XX:XX:XX","ip":"192.168.1.99","owner":"Unknown","name":"New Device","colour":"","added":"2016-02-10 22:05:03","updated":"2016-03-02 13:33:30"})
+    ```   
 	If/when an IP address changes, the updated field will be changed (as well as the IP address).
 
 	You can manually edit (using vi or notepad++, etc.) to personalize the information in your reports.  
@@ -96,11 +95,11 @@ For the owner and name fields, apostrophes (but not double quotes) are permitted
 The file name is set to the year, month, date - e.g., `2014-03-26-hourly_data.js` and contains a number of JavaScript variables and a couple of JavaScript function calls.
 
 	a) Device usage: Each device will have a row for each hourly interval that it is active on the network - e.g.,
-    hu({"mac":"11:22:33:44:55:66","hour":"02","down":42610,"up":57730,"ul_do":42610,"ul_up":57730})
+    `hu({"mac":"11:22:33:44:55:66","hour":"02","down":42610,"up":57730,"ul_do":42610,"ul_up":57730})`
 The down & up fields represent the total traffic for that interval in bytes.  The ul_do & ul_up will only appear if you have set `_unlimited_usage=1` in your config.file
 
 	b) Router totals: one entry for each hour of the day plus another for the starting value for the day.  The uptime is used to detect whether the router restarted at any point during the interval.
-    pnd({"hour":"00","uptime":26832.41,"down":1282731111,"up":75259806})
+    `pnd({"hour":"00","uptime":26832.41,"down":1282731111,"up":75259806})`
 
 	A new hourly usage file is created automatically at midnight every day and is stored in /opt/YAMon3/data[/year[/month]] (depending on the value of `_organizeData` in config.file).  The file is updated depending on the values of _updatefreq and _publishInterval in config.file.   
 
@@ -110,12 +109,12 @@ The down & up fields represent the total traffic for that interval in bytes.  Th
 The file name is set to the year, month, reset_date - e.g., `2014-03-05-mac_data.js` and will contain daily totals for every device that was on your network during that billing interval.
 
 	a) Device usage: Each device will have a row for each day that it is active on the network - e.g.,
-    dt({"mac":"11:22:33:44:55:66","day":"05","down":95116718,"up":12979815,"ul_do":0,"ul_up":0})
+    `dt({"mac":"11:22:33:44:55:66","day":"05","down":95116718,"up":12979815,"ul_do":0,"ul_up":0})`
 
 	The down & up fields represent the total traffic in bytes.  The ul_do & ul_up will only appear if you have set `_unlimited_usage=1` in your config.file.
 
 	b)  Router totals: one entry for each day of the billing interval.  The reboots field will show the number of times the server was rebooted on the given day.  It will not appear if the server was not rebooted.
-    dtp({"day":"09","down":3797402062,"up":136921041,"reboots":"1"})
+    `dtp({"day":"09","down":3797402062,"up":136921041,"reboots":"1"})`
     
 	This file is updated automatically just after midnight every day.  A new file is created automatically at the beginning of every billing interval (e.g., at midnight on the day before the reset date) as per the value of `_ispBillingDay` and is stored in /opt/YAMon3/data[/year[/month]] (depending on the value of `_organizeData` in config.file).  
 
@@ -126,7 +125,7 @@ This file is created in /tmp/www/data only if _doLiveUpdates is set to `1` in yo
 
 	The file is updated as per the value of _updatefreq in your config.file.
 
-	NB - do not try to edit this file...
+	NB - This file is generated/updated automatically. Manual edits to the file will be lost.
 
 
 ## KNOWN ISSUES:
